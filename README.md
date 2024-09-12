@@ -4,12 +4,13 @@
 
 ## Deskripsi
 
-![Architecture Overview](./images/PS.jpg)
-
 url tokopedia yang digunakan :
 
 Console Playstation : https://www.tokopedia.com/p/gaming/game-console/playstation
+
 Game Playstation    : https://www.tokopedia.com/p/gaming/cd-game/cd-playstation
+
+![Architecture Overview](./images/PS.jpg)
 
 Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para gamer khusus ya Playstation dari Tokopedia dengan dua metode berbeda:
 
