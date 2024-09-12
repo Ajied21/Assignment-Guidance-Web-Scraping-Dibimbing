@@ -36,7 +36,11 @@ Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para
 2. **Library**:
    - Untuk Selenium Web Scraping:
      ```bash
-     pip install requests pandas selenium beautifulsoup4
+     pip install
+     pip install requests
+     pip install pandas
+     pip install selenium
+     pip install beautifulsoup4
      ```
    - Untuk GraphQL API Scraping:
      ```bash
@@ -56,17 +60,11 @@ Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para
 ### Menjalankan Skrip
 
 1. **Selenium dan Beautifulsoap**:
-   - Jalankan skrip menggunakan:
-     ```bash
-     python selenium_scraping.py
-     ```
+   - Jalankan skrip menggunakan terminal atau code editor yang berlaku.
    - Skrip ini akan mengambil data dari halaman PlayStation Console dan CD PlayStation, lalu menyimpan data dalam format CSV dan JSON.
 
 2. **GraphQL API Scraping**:
-   - Jalankan skrip menggunakan:
-     ```bash
-     python graphql_scraping.py
-     ```
+   - Jalankan skrip menggunakan terminal atau code editor yang berlaku.
    - Skrip ini akan mengambil data dari pencarian produk Tokopedia dengan GraphQL API dan menyimpan data dalam format CSV dan JSON.
 
 ### Struktur Data
