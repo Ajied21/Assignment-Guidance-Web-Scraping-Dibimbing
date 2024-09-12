@@ -19,9 +19,7 @@ def init_driver():
     return driver
 
 def playstation(url_PS):
-    
     click_pages = 5
-
     list_product_ps = []
 
     if url_PS:
@@ -32,7 +30,6 @@ def playstation(url_PS):
         time.sleep(3)
 
         for ps in range(click_pages):
-
             for page in range(18):
                 driver.execute_script("window.scrollBy(0, 250)")
                 time.sleep(2)
@@ -42,15 +39,19 @@ def playstation(url_PS):
 
             # Ambil source halaman dengan BeautifulSoup
             soup_playstation = BeautifulSoup(driver.page_source, "html.parser")
-            
+
             for items in soup_playstation.findAll('div', class_="css-bk6tzz e1nlzfl2"):
-
                 def extract_name_product():
-
-                    name_tag = soup_playstation.find('div', class_='css-ouykaq')
-                    names_tags = name_tag.find('img')
-                    name_product = names_tags['alt']
-
+                    try:
+                        name_tag = items.find('div', class_='css-ouykaq')
+                        if name_tag:
+                            names_tags = name_tag.find('img')
+                            name_product = names_tags['alt'] if names_tags else "No Name"
+                        else:
+                            name_product = "No Name"
+                    except Exception as e:
+                        print(f"Error extracting name: {e}")
+                        name_product = "Error"
                     return name_product
 
                 def extract_badge(soup):
@@ -68,53 +69,56 @@ def playstation(url_PS):
                         return "no badge"
 
                 def extract_price():
-
-                    prices = items.find("div", class_="css-pp6b3e")
-                    
-                    if prices:
-                        price_text = prices.get_text(strip=True)
-                        price = price_text.replace('Rp', '').replace('.', '')
-                    
-                        try:
-                            price = float(price)
-                        except ValueError:
+                    try:
+                        prices = items.find("div", class_="css-pp6b3e")
+                        if prices:
+                            price_text = prices.get_text(strip=True)
+                            price = price_text.replace('Rp', '').replace('.', '')
+                            price = float(price) if price else None
+                        else:
                             price = None
-                    
-                    else:
+                    except Exception as e:
+                        print(f"Error extracting price: {e}")
                         price = None
-                    
                     return price
 
                 def extract_rating():
-                    
-                    rating_imgs = items.find_all("img", class_="css-177n1u3", alt="star")
-                    ratings = len(rating_imgs)
-                    rating_value = float(ratings)
-                    rating_values = round(rating_value, 1)
-                    
+                    try:
+                        rating_imgs = items.find_all("img", class_="css-177n1u3", alt="star")
+                        ratings = len(rating_imgs)
+                        rating_value = float(ratings)
+                        rating_values = round(rating_value, 1)
+                    except Exception as e:
+                        print(f"Error extracting rating: {e}")
+                        rating_values = None
                     return rating_values
 
                 def extract_images():
-                    
-                    name_tag = soup_playstation.find('div', class_='css-ouykaq')
-                    names_tags = name_tag.find('img')
-                    images = names_tags['src']
-
+                    try:
+                        name_tag = items.find('div', class_='css-ouykaq')
+                        names_tags = name_tag.find('img')
+                        images = names_tags['src'] if names_tags else "No Image"
+                    except Exception as e:
+                        images = "No Image"
                     return images
                 
-                name            = extract_name_product()
-                brand           = "Sony"
-                variant         = "PlayStation"
-                power_badge     = extract_badge(soup_playstation)
+                name = extract_name_product()
+                brand = "Sony"
+                variant = "PlayStation"
+                power_badge = extract_badge(soup_playstation)
                 status_official = True if "official store badge" in power_badge else False
 
-                for store in items.findAll("div", class_="css-vbihp9"):
-                    location    = store.findAll("span", class_="css-ywdpwd")[0].text
-                    shop_name   = store.findAll("span", class_="css-ywdpwd")[1].text
+                store_info = items.find("div", class_="css-vbihp9")
+                if store_info:
+                    location = store_info.findAll("span", class_="css-ywdpwd")[0].text
+                    shop_name = store_info.findAll("span", class_="css-ywdpwd")[1].text
+                else:
+                    location = "Unknown"
+                    shop_name = "Unknown"
 
-                price           = extract_price()
-                rating          = extract_rating() 
-                sold            = items.find("div", class_="css-1riykrk")
+                price = extract_price()
+                rating = extract_rating() 
+                sold = items.find("div", class_="css-1riykrk")
 
                 if sold:
                     span_element = sold.find("span")
@@ -125,12 +129,12 @@ def playstation(url_PS):
                 else:
                     sold = None
 
-                url_shop        = items.select_one("a").get("href").replace('""','')
-                url_image       = extract_images()
+                url_shop = items.select_one("a").get("href").replace('""','')
+                url_image = extract_images()
 
                 list_product_ps.append(
-                (name, brand, variant, power_badge, status_official, 
-                location, shop_name, price, rating, sold, url_shop, url_image)
+                    (name, brand, variant, power_badge, status_official, 
+                    location, shop_name, price, rating, sold, url_shop, url_image)
                 )
                                         
             if ps < click_pages - 1:
@@ -139,13 +143,14 @@ def playstation(url_PS):
                     next_button.click()
                     time.sleep(3)
                 except Exception as e:
+                    print(f"Error clicking next button: {e}")
                     break
             
         driver.quit()
 
         data_ps = pd.DataFrame(list_product_ps, columns=["name", "brand", "variant", "power_badge", 
                                                          "status_official", "location", "shop_name",
-                                                         "price","rating", "sold", "url_shop", "url_image"])
+                                                         "price", "rating", "sold", "url_shop", "url_image"])
 
         print(data_ps)
             
