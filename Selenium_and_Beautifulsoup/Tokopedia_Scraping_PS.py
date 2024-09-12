@@ -47,9 +47,9 @@ def playstation(url_PS):
 
                 def extract_name_product():
 
-                    names = items.find('div', class_='css-ouykaq')
-                    name_tag = names.find('img')
-                    name_product = name_tag['alt']
+                    name_tag = soup_playstation.find('div', class_='css-ouykaq')
+                    names_tags = name_tag.find('img')
+                    name_product = names_tags['alt']
 
                     return name_product
 
@@ -96,11 +96,11 @@ def playstation(url_PS):
 
                 def extract_images():
                     
-                    img = items.find('div', class_='css-ouykaq')
-                    img_tag = img.find('img')
-                    image = img_tag['src']
+                    name_tag = soup_playstation.find('div', class_='css-ouykaq')
+                    names_tags = name_tag.find('img')
+                    images = names_tags['src']
 
-                    return image
+                    return images
                 
                 name            = extract_name_product()
                 brand           = "Sony"
