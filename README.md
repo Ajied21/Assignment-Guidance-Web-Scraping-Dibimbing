@@ -12,8 +12,8 @@ Console Playstation : https://www.tokopedia.com/p/gaming/game-console/playstatio
 
 <div style="text-align: center;">
     <img src="./images/PS.jpg" alt="Architecture Overview" width="500"/>
-</div>__
-
+</div>
+__
 
 Game Playstation    : https://www.tokopedia.com/p/gaming/cd-game/cd-playstation
 
