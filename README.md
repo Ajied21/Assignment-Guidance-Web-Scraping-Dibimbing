@@ -12,7 +12,7 @@ Console Playstation : https://www.tokopedia.com/p/gaming/game-console/playstatio
 
 <div style="text-align: center;">
     <img src="./images/PS.jpg" alt="Architecture Overview" width="500"/>
-</div>
+</div>__
 
 
 Game Playstation    : https://www.tokopedia.com/p/gaming/cd-game/cd-playstation
@@ -94,9 +94,9 @@ Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para
   - `rating`: Rating produk
   - `sold`: Jumlah produk terjual
   - `url_shop`: URL toko
-  - `url_image`: URL gambar produk
+  - `url_image`: URL gambar produk__
 
-  - **Kolom Data untuk GraphQL API**:
+- **Kolom Data untuk GraphQL API**:
   - `id`: ID produk
   - `name`: Nama produk
   - `brand`: Merek produk
