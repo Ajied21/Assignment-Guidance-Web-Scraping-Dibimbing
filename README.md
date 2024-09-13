@@ -36,7 +36,6 @@ Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para
 2. **Library**:
    - Untuk Selenium Web Scraping:
      ```bash
-     pip install
      pip install requests
      pip install pandas
      pip install selenium
@@ -44,7 +43,8 @@ Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para
      ```
    - Untuk GraphQL API Scraping:
      ```bash
-     pip install requests pandas
+     pip install requests
+     pip install pandas
      ```
 3. **WebDriver**: Unduh dan pasang [ChromeDriver](https://sites.google.com/chromium.org/driver/) atau WebDriver lain yang sesuai dengan browser Anda.
 
