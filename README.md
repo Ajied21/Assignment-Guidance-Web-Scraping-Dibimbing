@@ -1,6 +1,8 @@
 # Scraping Data Produk Tokopedia
 
-![Architecture Overview](./images/Tokped.png)
+<div style="text-align: center;">
+    <img src="./images/Tokped.png" alt="Architecture Overview" width="500"/>
+</div>
 
 ## Deskripsi
 
@@ -8,9 +10,15 @@ url tokopedia yang digunakan :
 
 Console Playstation : https://www.tokopedia.com/p/gaming/game-console/playstation
 
+<div style="text-align: center;">
+    <img src="./images/PS.jpg" alt="Architecture Overview" width="500"/>
+</div>
+
 Game Playstation    : https://www.tokopedia.com/p/gaming/cd-game/cd-playstation
 
-![Architecture Overview](./images/PS.jpg)
+<div style="text-align: center;">
+    <img src="./images/game.jpg" alt="Architecture Overview" width="500"/>
+</div>
 
 Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para gamer khusus ya Playstation dari Tokopedia dengan dua metode berbeda:
 
