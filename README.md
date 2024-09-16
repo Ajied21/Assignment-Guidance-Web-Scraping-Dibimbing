@@ -28,7 +28,7 @@ Skrip ini digunakan untuk mengumpulkan data produk game konsol yang disukai para
 
 ## Fitur
 
-- **Selenium Web Scraping**:
+- **Selenium dan Beautifulsoap Web Scraping**:
   - Mengambil data produk dari halaman PlayStation Console dan CD PlayStation.
   - Menggunakan multithreading untuk meningkatkan kecepatan pengambilan data.
   - Menyimpan data dalam format CSV dan JSON.
